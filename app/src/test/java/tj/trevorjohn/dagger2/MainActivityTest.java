@@ -9,11 +9,15 @@ import org.robolectric.Robolectric;
 import org.robolectric.RobolectricGradleTestRunner;
 import org.robolectric.annotation.Config;
 
+import javax.inject.Inject;
+
 import static org.assertj.core.api.Assertions.assertThat;
 
 @RunWith(RobolectricGradleTestRunner.class)
 @Config(sdk = 18, constants = BuildConfig.class, packageName = "tj.trevorjohn.dagger2")
 public class MainActivityTest {
+
+  @Inject Api api;
 
   private MainActivity subject;
 
@@ -22,5 +26,6 @@ public class MainActivityTest {
     subject = Robolectric.setupActivity(MainActivity.class);
     assertThat(subject.api).isNotNull();
     assertThat(new MockUtil().isMock(subject.api)).isTrue();
+    assertThat(subject.api).isSameAs(api);
   }
 }

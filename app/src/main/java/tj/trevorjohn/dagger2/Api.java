@@ -4,7 +4,8 @@ import java.util.List;
 
 import retrofit.http.GET;
 import retrofit.http.Path;
+import rx.Observable;
 
 public interface Api {
-  @GET("/users/{user}/repos") List<Repo> listRepos(@Path("user") String user);
+  @GET("/users/{user}/repos") Observable<List<Repo>> listRepos(@Path("user") String user);
 }

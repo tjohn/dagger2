@@ -6,6 +6,4 @@ import dagger.Component;
 interface AppComponent {
   void inject(MainActivity activity);
   void inject(OtherActivity activity);
-
-  Api build();
 }
